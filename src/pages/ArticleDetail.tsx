@@ -1,10 +1,11 @@
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { CtaBand } from '../components/CtaBand'
 import { Faq } from '../components/Faq'
 import { PageHero } from '../components/PageHero'
 import { Reveal } from '../components/Reveal'
-import { ARTICLES, getArticle } from '../data/articles'
-import { SERVICE_PAGES } from '../data/services'
+import { getArticle } from '../data/articles'
+import { articleTiles, serviceTiles } from '../data/tiles'
+import { Tiles } from '../components/Tiles'
 import { Seo } from '../seo/Seo'
 import NotFound from './NotFound'
 import { ARTICLE_MEDIA } from '../data/media'
@@ -42,20 +43,9 @@ export default function ArticleDetail() {
           ))}
         </div>
       </article>
-      <Faq items={a.faqs} />
+      <Faq items={a.faqs} media={ARTICLE_MEDIA[a.slug]} />
       <section>
-        <div className="chips">
-          {SERVICE_PAGES.map((s) => (
-            <Link key={s.slug} className="chip" to={`/xizmatlar/${s.slug}`}>
-              {s.name}
-            </Link>
-          ))}
-          {ARTICLES.filter((x) => x.slug !== a.slug).map((x) => (
-            <Link key={x.slug} className="chip" to={`/maqolalar/${x.slug}`}>
-              {x.title}
-            </Link>
-          ))}
-        </div>
+        <Tiles items={[...serviceTiles(), ...articleTiles(a.slug)]} />
       </section>
       <CtaBand />
     </>

@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { Button } from '../components/Button'
 import { CtaBand } from '../components/CtaBand'
 import { Faq } from '../components/Faq'
@@ -6,8 +6,9 @@ import { Media } from '../components/Media'
 import { PageHero } from '../components/PageHero'
 import { Reveal } from '../components/Reveal'
 import { SectionHeader } from '../components/SectionHeader'
-import { CITIES } from '../data/cities'
-import { getService, SERVICE_PAGES } from '../data/services'
+import { Tiles } from '../components/Tiles'
+import { getService } from '../data/services'
+import { cityTiles, serviceTiles } from '../data/tiles'
 import { Seo } from '../seo/Seo'
 import { SITE } from '../site'
 import NotFound from './NotFound'
@@ -87,23 +88,12 @@ export default function ServiceDetail() {
           ))}
         </div>
       </section>
-      <Faq items={s.faqs} />
+      <Faq items={s.faqs} media={s.gallery[0]} />
       <section>
         <SectionHeader label="Boshqa xizmatlar">
           Yana <span className="gold">ko'ring</span>
         </SectionHeader>
-        <div className="chips">
-          {SERVICE_PAGES.filter((x) => x.slug !== s.slug).map((x) => (
-            <Link key={x.slug} className="chip" to={`/xizmatlar/${x.slug}`}>
-              {x.name}
-            </Link>
-          ))}
-          {CITIES.map((c) => (
-            <Link key={c.slug} className="chip" to={`/hududlar/${c.slug}`}>
-              {s.name} — {c.name}
-            </Link>
-          ))}
-        </div>
+        <Tiles items={[...serviceTiles(s.slug), ...cityTiles()]} />
       </section>
       <CtaBand />
     </>

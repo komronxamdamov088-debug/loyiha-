@@ -23,7 +23,7 @@ export default function Configure() {
         media={PHOTO.qora}
       />
       <Configurator />
-      <Faq items={faqs} />
+      <Faq items={faqs} media={PHOTO.marmar} />
       <CtaBand />
     </>
   )

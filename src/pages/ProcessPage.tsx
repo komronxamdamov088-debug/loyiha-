@@ -22,7 +22,7 @@ export default function ProcessPage() {
         media={art('loft', 'ice')}
       />
       <Process />
-      <Faq items={GENERAL_FAQS.slice(1, 5)} />
+      <Faq items={GENERAL_FAQS.slice(1, 5)} media={art('partition', 'gold')} />
       <CtaBand />
     </>
   )

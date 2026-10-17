@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { Configurator } from '../components/Configurator'
 import { Contact } from '../components/Contact'
 import { CtaBand } from '../components/CtaBand'
@@ -12,8 +11,10 @@ import { Reveal } from '../components/Reveal'
 import { SectionHeader } from '../components/SectionHeader'
 import { Services } from '../components/Services'
 import { Stats } from '../components/Stats'
-import { CITIES } from '../data/cities'
+import { Tiles } from '../components/Tiles'
+import { cityTiles } from '../data/tiles'
 import { GENERAL_FAQS } from '../data/faqs'
+import { PHOTO } from '../data/media'
 import { Seo } from '../seo/Seo'
 
 export default function Home() {
@@ -40,16 +41,10 @@ export default function Home() {
         <SectionHeader label="Hududlar">
           Qayerda <span className="gold">ishlaymiz</span>
         </SectionHeader>
-        <div className="chips">
-          {CITIES.map((c) => (
-            <Link key={c.slug} to={`/hududlar/${c.slug}`} className="chip">
-              {c.name}
-            </Link>
-          ))}
-        </div>
+        <Tiles items={cityTiles()} />
       </section>
       <Reviews />
-      <Faq items={GENERAL_FAQS.slice(0, 5)} title="Ko'p beriladigan savollar" />
+      <Faq items={GENERAL_FAQS.slice(0, 5)} title="Ko'p beriladigan savollar" media={PHOTO.qora} />
       <CtaBand />
       <Contact />
     </>

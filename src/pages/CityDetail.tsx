@@ -1,11 +1,12 @@
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { CtaBand } from '../components/CtaBand'
 import { Faq } from '../components/Faq'
 import { PageHero } from '../components/PageHero'
 import { Reveal } from '../components/Reveal'
 import { SectionHeader } from '../components/SectionHeader'
+import { Tiles } from '../components/Tiles'
 import { getCity } from '../data/cities'
-import { SERVICE_PAGES } from '../data/services'
+import { serviceTiles } from '../data/tiles'
 import { Seo } from '../seo/Seo'
 import NotFound from './NotFound'
 import { CITY_MEDIA } from '../data/media'
@@ -40,15 +41,9 @@ export default function CityDetail() {
         <SectionHeader label="Xizmatlar">
           {c.locative} <span className="gold">nimalar qilamiz</span>
         </SectionHeader>
-        <div className="chips">
-          {SERVICE_PAGES.map((s) => (
-            <Link key={s.slug} className="chip" to={`/xizmatlar/${s.slug}`}>
-              {s.name}
-            </Link>
-          ))}
-        </div>
+        <Tiles items={serviceTiles()} />
       </section>
-      <Faq items={c.faqs} />
+      <Faq items={c.faqs} media={CITY_MEDIA[c.slug]} />
       <CtaBand title={`${c.name}da bepul o'lchov`} />
     </>
   )
