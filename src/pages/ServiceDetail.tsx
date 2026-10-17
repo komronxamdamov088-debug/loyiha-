@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom'
 import { Button } from '../components/Button'
 import { CtaBand } from '../components/CtaBand'
 import { Faq } from '../components/Faq'
+import { Media } from '../components/Media'
 import { PageHero } from '../components/PageHero'
 import { Reveal } from '../components/Reveal'
 import { SectionHeader } from '../components/SectionHeader'
@@ -25,6 +26,7 @@ export default function ServiceDetail() {
         title={s.h1}
         lead={s.answer}
         meta={<span>Yangilangan: {SITE.modified}</span>}
+        media={s.hero}
       />
       <section className="prose-sec">
         <Reveal className="prose">
@@ -39,17 +41,15 @@ export default function ServiceDetail() {
           </div>
         </Reveal>
       </section>
-      {s.images && (
-        <section className="shots-sec">
-          <div className="shots">
-            {s.images.map((im, i) => (
-              <Reveal key={im.src} className={`shot s${i}`} delay={i > 0 ? (Math.min(i, 3) as 1 | 2 | 3) : undefined}>
-                <img src={im.src} alt={im.alt} width={im.w} height={im.h} loading="lazy" decoding="async" />
-              </Reveal>
-            ))}
-          </div>
-        </section>
-      )}
+      <section className="shots-sec">
+        <div className="shots">
+          {s.gallery.map((im, i) => (
+            <Reveal key={`${i}-${im.alt}`} className={`shot s${i}`} delay={i > 0 ? (Math.min(i, 3) as 1 | 2 | 3) : undefined}>
+              <Media item={im} />
+            </Reveal>
+          ))}
+        </div>
+      </section>
       <section>
         <SectionHeader label="Afzalliklar">
           Nega <span className="gold">LUMIVERA</span>

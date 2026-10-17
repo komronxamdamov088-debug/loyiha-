@@ -1,7 +1,8 @@
 import type { MouseEvent } from 'react'
 import { Link } from 'react-router-dom'
-import { SERVICES } from '../data/content'
+import { SERVICES, SERVICE_MEDIA } from '../data/content'
 import { useInView } from '../hooks/useInView'
+import { Media } from './Media'
 import { SectionHeader } from './SectionHeader'
 
 type Service = (typeof SERVICES)[number]
@@ -29,6 +30,9 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
       onMouseMove={onMove}
       onMouseLeave={(e) => (e.currentTarget.style.transform = '')}
     >
+      <div className="cmedia" aria-hidden="true">
+        <Media item={SERVICE_MEDIA[service.slug as keyof typeof SERVICE_MEDIA]} />
+      </div>
       <span className="n">{String(index + 1).padStart(2, '0')}</span>
       <svg viewBox="0 0 100 100" aria-hidden="true">
         <rect {...service.shape} />

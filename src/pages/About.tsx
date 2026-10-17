@@ -4,6 +4,7 @@ import { Reveal } from '../components/Reveal'
 import { SectionHeader } from '../components/SectionHeader'
 import { Stats } from '../components/Stats'
 import { Seo } from '../seo/Seo'
+import { PHOTO } from '../data/media'
 
 const VALUES = [
   { title: 'Xavfsizlik', text: "Faqat temperlangan yoki triplex shisha va zanglamaydigan furnitura ishlatamiz." },
@@ -25,6 +26,7 @@ export default function About() {
           </>
         }
         lead="LUMIVERA — 15 yillik tajribaga ega shisha konstruksiyalar ustaxonasi: dush kabinalari, peregorodkalar, loft eshiklar va moskit setkalari."
+        media={PHOTO.qora}
       />
       <section className="prose-sec">
         <Reveal className="prose">

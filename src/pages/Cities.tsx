@@ -4,6 +4,7 @@ import { PageHero } from '../components/PageHero'
 import { Reveal } from '../components/Reveal'
 import { CITIES } from '../data/cities'
 import { Seo } from '../seo/Seo'
+import { PHOTO } from '../data/media'
 
 export default function Cities() {
   return (
@@ -18,6 +19,7 @@ export default function Cities() {
           </>
         }
         lead="Toshkent, Samarqand va Buxoroda o'lchov, yetkazish va o'rnatish xizmatini ko'rsatamiz."
+        media={PHOTO.marmar}
       />
       <section>
         <div className="grid">

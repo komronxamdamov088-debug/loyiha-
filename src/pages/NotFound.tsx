@@ -1,6 +1,7 @@
 import { Button } from '../components/Button'
 import { PageHero } from '../components/PageHero'
 import { Seo } from '../seo/Seo'
+import { art } from '../data/media'
 
 export default function NotFound() {
   return (
@@ -15,6 +16,7 @@ export default function NotFound() {
           </>
         }
         lead="Bu manzil mavjud emas yoki ko'chirilgan. Bosh sahifaga qayting yoki xizmatlarimizni ko'ring."
+        media={art('tempered', 'rose')}
       />
       <section className="prose-sec">
         <div className="cta">

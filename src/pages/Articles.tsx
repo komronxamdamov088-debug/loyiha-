@@ -4,6 +4,7 @@ import { PageHero } from '../components/PageHero'
 import { Reveal } from '../components/Reveal'
 import { ARTICLES } from '../data/articles'
 import { Seo } from '../seo/Seo'
+import { art } from '../data/media'
 
 export default function Articles() {
   return (
@@ -18,6 +19,7 @@ export default function Articles() {
           </>
         }
         lead="Temperlangan shisha, dush kabinasi tanlash va loft peregorodkalar bo'yicha qisqa va aniq qo'llanmalar."
+        media={art('tempered', 'gold')}
       />
       <section>
         <div className="grid">

@@ -1,5 +1,5 @@
-import type { CSSProperties } from 'react'
 import { GALLERY } from '../data/content'
+import { Media } from './Media'
 import { Reveal } from './Reveal'
 import { SectionHeader } from './SectionHeader'
 
@@ -11,15 +11,8 @@ export function Gallery() {
       </SectionHeader>
       <div className="gal">
         {GALLERY.map((item, i) => (
-          <Reveal
-            key={item.title}
-            className={`g${item.img ? ' has-img' : ''}`}
-            delay={i % 3 ? ((i % 3) as 1 | 2) : undefined}
-            style={{ '--bgi': item.bg } as CSSProperties}
-          >
-            {item.img && (
-              <img src={item.img.src} alt={item.img.alt} width={item.img.w} height={item.img.h} loading="lazy" decoding="async" />
-            )}
+          <Reveal key={item.title} className="g has-img" delay={i % 3 ? ((i % 3) as 1 | 2) : undefined}>
+            <Media item={item.media} />
             <span>{item.title}</span>
           </Reveal>
         ))}

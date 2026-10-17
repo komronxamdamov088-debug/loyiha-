@@ -1,3 +1,5 @@
+import { art, PHOTO, type MediaItem } from './media'
+
 export interface Faq {
   q: string
   a: string
@@ -17,7 +19,9 @@ export interface ServicePage {
   specs: { label: string; value: string }[]
   useCases: string[]
   faqs: Faq[]
-  images?: { src: string; alt: string; w: number; h: number }[]
+  hero: MediaItem
+  /** Three items: one wide, two tall. */
+  gallery: MediaItem[]
 }
 
 export const SERVICE_PAGES: ServicePage[] = [
@@ -49,11 +53,8 @@ export const SERVICE_PAGES: ServicePage[] = [
       { label: 'Kafolat', value: '5 yil' },
     ],
     useCases: ["Kvartira vannaxonasi", 'Villa va kottedj', 'Mehmonxona va xostel', 'Fitnes-klub va SPA'],
-    images: [
-      { src: '/img/dush-marmar.jpg', alt: 'Marmar devorli vannaxonada ramkasiz shisha dush kabinasi', w: 1400, h: 933 },
-      { src: '/img/dush-qora-ramka.jpg', alt: 'Qora ramkali sirpanuvchi eshikli dush kabinasi', w: 800, h: 1200 },
-      { src: '/img/dush-oyna-eshik.jpg', alt: 'Shaffof shisha eshikli dush kabinasi', w: 800, h: 1200 },
-    ],
+    hero: PHOTO.hammom,
+    gallery: [PHOTO.marmar, PHOTO.qora, PHOTO.oyna],
     faqs: [
       {
         q: 'Dush kabinasi uchun qanday shisha qalinligi tanlanadi?',
@@ -101,6 +102,8 @@ export const SERVICE_PAGES: ServicePage[] = [
       { label: 'Kafolat', value: '5 yil' },
     ],
     useCases: ['Ofis kabinetlari', 'Uchrashuv xonalari', 'Studiya kvartiralar', 'Klinika va salonlar'],
+    hero: art('partition', 'ice'),
+    gallery: [art('partition', 'gold'), art('loft', 'ice'), art('tempered', 'ice')],
     faqs: [
       {
         q: 'Shisha peregorodka ovozni o‘tkazadimi?',
@@ -147,6 +150,8 @@ export const SERVICE_PAGES: ServicePage[] = [
       { label: 'Kafolat', value: '5 yil' },
     ],
     useCases: ['Oshxona va mehmonxona oralig‘i', 'Kabinet va garderob', 'Restoran va kafe', 'Ofis kirish zonasi'],
+    hero: art('loft', 'gold'),
+    gallery: [art('loft', 'ice'), art('partition', 'gold'), art('tempered', 'gold')],
     faqs: [
       {
         q: 'Loft eshik qanday xonalarga mos keladi?',
@@ -192,6 +197,8 @@ export const SERVICE_PAGES: ServicePage[] = [
       { label: 'Tayyorlash muddati', value: 'Qisqa muddatda' },
     ],
     useCases: ['Kvartira derazalari', 'Balkon va lodjiya', 'Kottedj eshiklari', 'Restoran terasalari'],
+    hero: art('screen', 'green'),
+    gallery: [art('screen', 'gold'), art('screen', 'ice'), art('tempered', 'green')],
     faqs: [
       {
         q: 'Qaysi turdagi moskit setka tanlash kerak?',

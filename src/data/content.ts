@@ -1,4 +1,5 @@
 import { SITE } from '../site'
+import { art, PHOTO } from './media'
 
 export const PHONE = SITE.phone
 export const PHONE_LABEL = SITE.phoneLabel
@@ -59,25 +60,21 @@ export const STATS = [
 ]
 
 export const GALLERY = [
-  {
-    title: 'Villa — dush zonasi',
-    bg: 'linear-gradient(135deg,#3a2a0a,#c9964a 60%,#1b1505)',
-    img: { src: '/img/dush-marmar.jpg', alt: 'Marmar devorli dush zonasida shaffof temperlangan shisha kabina', w: 1400, h: 933 },
-  },
-  { title: 'Ofis peregorodka', bg: 'linear-gradient(160deg,#0d2a3f,#2a7ca8)' },
-  { title: 'Loft eshik', bg: 'linear-gradient(160deg,#1a1a1a,#555)' },
-  {
-    title: 'Qora ramkali dush kabinasi',
-    bg: 'linear-gradient(200deg,#2d1a3f,#7a4aa8)',
-    img: { src: '/img/dush-qora-ramka.jpg', alt: 'Qora metall ramkali sirpanuvchi shisha dush kabinasi', w: 800, h: 1200 },
-  },
-  {
-    title: 'Zamonaviy hammom',
-    bg: 'linear-gradient(120deg,#0f3a2b,#3aa87a)',
-    img: { src: '/img/hammom-oq.jpg', alt: 'Oq hammomda vanna va shisha dush kabinasi', w: 1400, h: 933 },
-  },
-  { title: 'Restoran zonasi', bg: 'linear-gradient(120deg,#3f1a1a,#b84a4a)' },
+  { title: 'Villa — dush zonasi', media: PHOTO.marmar },
+  { title: 'Ofis peregorodka', media: art('partition', 'ice') },
+  { title: 'Loft eshik', media: art('loft', 'gold') },
+  { title: 'Qora ramkali dush kabinasi', media: PHOTO.qora },
+  { title: 'Zamonaviy hammom', media: PHOTO.hammom },
+  { title: 'Restoran zonasi', media: art('partition', 'rose') },
 ]
+
+/** Visual shown behind each service card. */
+export const SERVICE_MEDIA = {
+  'dush-kabinalari': PHOTO.marmar,
+  peregorodkalar: art('partition', 'ice'),
+  'loft-eshiklar': art('loft', 'gold'),
+  'moskit-setkalari': art('screen', 'green'),
+} as const
 
 export const STEPS = [
   { title: "O'lchov", text: 'Usta bepul kelib o\'lchaydi.' },

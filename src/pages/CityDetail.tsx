@@ -8,6 +8,7 @@ import { getCity } from '../data/cities'
 import { SERVICE_PAGES } from '../data/services'
 import { Seo } from '../seo/Seo'
 import NotFound from './NotFound'
+import { CITY_MEDIA } from '../data/media'
 
 export default function CityDetail() {
   const { slug = '' } = useParams()
@@ -26,6 +27,7 @@ export default function CityDetail() {
           </>
         }
         lead={c.intro}
+        media={CITY_MEDIA[c.slug]}
       />
       <section className="prose-sec">
         <Reveal className="prose">

@@ -1,6 +1,7 @@
 import { Contact } from '../components/Contact'
 import { PageHero } from '../components/PageHero'
 import { Seo } from '../seo/Seo'
+import { PHOTO } from '../data/media'
 
 export default function ContactPage() {
   return (
@@ -15,6 +16,7 @@ export default function ContactPage() {
           </>
         }
         lead="Ariza qoldiring yoki qo'ng'iroq qiling — menejer qulay vaqtda bepul o'lchovni kelishadi."
+        media={PHOTO.hammom}
       />
       <Contact />
     </>

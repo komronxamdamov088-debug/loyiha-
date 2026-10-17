@@ -7,6 +7,7 @@ import { ARTICLES, getArticle } from '../data/articles'
 import { SERVICE_PAGES } from '../data/services'
 import { Seo } from '../seo/Seo'
 import NotFound from './NotFound'
+import { ARTICLE_MEDIA } from '../data/media'
 
 export default function ArticleDetail() {
   const { slug = '' } = useParams()
@@ -21,6 +22,7 @@ export default function ArticleDetail() {
         kicker="✦ Maqola"
         title={a.title}
         lead={a.answer}
+        media={ARTICLE_MEDIA[a.slug]}
         meta={
           <span>
             <time dateTime={a.published}>{a.published}</time> · yangilangan <time dateTime={a.modified}>{a.modified}</time> ·{' '}
