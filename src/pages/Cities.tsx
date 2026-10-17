@@ -1,0 +1,40 @@
+import { Link } from 'react-router-dom'
+import { CtaBand } from '../components/CtaBand'
+import { PageHero } from '../components/PageHero'
+import { Reveal } from '../components/Reveal'
+import { CITIES } from '../data/cities'
+import { Seo } from '../seo/Seo'
+
+export default function Cities() {
+  return (
+    <>
+      <Seo path="/hududlar" />
+      <PageHero
+        crumbs={[{ name: 'Hududlar' }]}
+        kicker="✦ Hududlar"
+        title={
+          <>
+            Xizmat <span className="gold">hududlari</span>
+          </>
+        }
+        lead="Toshkent, Samarqand va Buxoroda o'lchov, yetkazish va o'rnatish xizmatini ko'rsatamiz."
+      />
+      <section>
+        <div className="grid">
+          {CITIES.map((c) => (
+            <Reveal key={c.slug} className="card flat">
+              <h3>
+                <Link to={`/hududlar/${c.slug}`}>{c.name}</Link>
+              </h3>
+              <p>{c.intro}</p>
+              <Link className="more" to={`/hududlar/${c.slug}`}>
+                Batafsil →
+              </Link>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+      <CtaBand />
+    </>
+  )
+}

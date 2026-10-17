@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LUMIVERA — Shisha va nur san'ati</title>
+<meta name="description" content="Dush kabinalari, shisha peregorodkalar, loft eshiklar va moskit setkalari. 15 yillik tajriba.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Manrope:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07090f;--bg2:#0d1120;--gold:#e3b866;--gold2:#fff1c9;--ice:#7fd6ff;--txt:#eef1f7;--mut:#8b93a7;--r:22px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:Manrope,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,.serif{font-family:'Cormorant Garamond',serif;font-weight:600}
+::selection{background:var(--gold);color:#000}
+#bg{position:fixed;inset:0;z-index:-1}
+/* loader */
+#loader{position:fixed;inset:0;background:var(--bg);z-index:10000;display:grid;place-items:center;transition:clip-path 1.1s cubic-bezier(.77,0,.18,1);clip-path:inset(0 0 0 0)}
+#loader.done{clip-path:inset(0 0 100% 0);pointer-events:none}
+.ld{text-align:center}
+.ld svg{width:90px;animation:spin 3s linear infinite}
+.ld b{display:block;margin-top:18px;letter-spacing:.6em;font-weight:300;font-size:14px;color:var(--gold)}
+.ld i{display:block;width:180px;height:2px;background:#ffffff1a;margin:18px auto 0;overflow:hidden}
+.ld i::after{content:"";display:block;height:100%;width:100%;background:var(--gold);transform:translateX(-100%);animation:load 1.6s forwards}
+@keyframes load{to{transform:none}}
+@keyframes spin{to{transform:rotateY(360deg)}}
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:22px 5vw;transition:.4s}
+nav.s{background:#07090fcc;backdrop-filter:blur(14px);padding:14px 5vw;border-bottom:1px solid #ffffff12}
+.logo{font-family:'Cormorant Garamond';font-size:26px;letter-spacing:.25em;font-weight:700;display:flex;gap:10px;align-items:center}
+.logo svg{width:26px}
+nav ul{display:flex;gap:34px;list-style:none;font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+nav ul a{position:relative;padding:4px 0}
+nav ul a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:.4s}
+nav ul a:hover::after{transform:scaleX(1);transform-origin:left}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 32px;border-radius:99px;background:linear-gradient(120deg,var(--gold),#f7dc9b);color:#1a1200;font-weight:800;font-size:13px;letter-spacing:.1em;text-transform:uppercase;position:relative;overflow:hidden;border:0;cursor:pointer;transition:transform .3s,box-shadow .3s}
+.btn::before{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(100deg,transparent,#fff9,transparent);transform:skewX(-20deg);animation:shine 3s infinite}
+@keyframes shine{to{left:150%}}
+.btn:hover{box-shadow:0 10px 40px #e3b86655}
+.btn.o{background:none;color:var(--txt);border:1px solid #ffffff33}
+.btn.o::before{display:none}
+@media(max-width:860px){nav ul{display:none}}
+/* hero */
+.hero{min-height:100vh;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;padding:0 5vw;gap:40px;position:relative}
+.tag{display:inline-block;padding:8px 18px;border:1px solid #e3b86655;border-radius:99px;font-size:12px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:28px}
+.hero h1{font-size:clamp(52px,8vw,128px);line-height:.92;font-weight:700}
+.hero h1 .l{display:block;overflow:hidden}
+.hero h1 .l span{display:inline-block;transform:translateY(110%);animation:up 1.1s cubic-bezier(.2,.9,.2,1) forwards;animation-delay:1.5s}
+.hero h1 .l:nth-child(2) span{animation-delay:1.65s}.hero h1 .l:nth-child(3) span{animation-delay:1.8s}
+.gold{background:linear-gradient(100deg,var(--gold),var(--gold2),var(--gold));background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gl 4s linear infinite}
+.hero h1 .l span.gold{animation:up 1.1s cubic-bezier(.2,.9,.2,1) 1.8s forwards,gl 4s linear infinite}
+@keyframes gl{to{background-position:200%}}
+@keyframes up{to{transform:none}}
+.hero p{max-width:520px;color:var(--mut);line-height:1.8;margin:30px 0 40px;font-size:17px}
+.hero .cta{display:flex;gap:16px;flex-wrap:wrap}
+.hero-r{position:relative;height:70vh;perspective:1200px;display:grid;place-items:center}
+.door{width:min(340px,70%);aspect-ratio:3/5;position:relative;transform-style:preserve-3d;transition:transform .15s}
+.pane{position:absolute;inset:0;border-radius:6px;border:3px solid #1a1d28;background:linear-gradient(135deg,#7fd6ff22,#ffffff08 40%,#7fd6ff33);backdrop-filter:blur(2px);box-shadow:inset 0 0 60px #7fd6ff22,0 40px 80px #000a,0 0 0 1px #e3b86688;overflow:hidden}
+.pane::before{content:"";position:absolute;top:-50%;left:-60%;width:40%;height:200%;background:linear-gradient(90deg,transparent,#ffffff40,transparent);transform:rotate(18deg);animation:sweep 5s infinite}
+@keyframes sweep{0%{left:-60%}60%,100%{left:160%}}
+.pane::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 22px,#ffffff08 22px 24px)}
+.pane.b{transform:translateZ(-60px) translateX(40px);opacity:.5}
+.pane.f{transform:translateZ(60px) translateX(-30px)}
+.handle{position:absolute;right:14px;top:45%;width:6px;height:90px;background:linear-gradient(var(--gold),var(--gold2),var(--gold));border-radius:3px;box-shadow:0 0 18px var(--gold)}
+.float{position:absolute;padding:12px 18px;border-radius:14px;background:#ffffff10;backdrop-filter:blur(12px);border:1px solid #ffffff1f;font-size:13px;animation:fl 5s ease-in-out infinite}
+.float b{display:block;font-family:'Cormorant Garamond';font-size:26px;color:var(--gold)}
+.f1{top:12%;left:-4%}.f2{bottom:14%;right:-2%;animation-delay:-2s}
+@keyframes fl{50%{transform:translateY(-16px)}}
+.scroll{position:absolute;bottom:30px;left:50%;width:1px;height:60px;background:linear-gradient(var(--gold),transparent);animation:sc 2s infinite}
+@keyframes sc{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@media(max-width:860px){.hero{grid-template-columns:1fr;padding-top:110px}.hero-r{height:50vh}}
+/* marquee */
+.mq{border-block:1px solid #ffffff14;padding:26px 0;overflow:hidden;white-space:nowrap;background:#ffffff04}
+.mq div{display:inline-block;animation:mq 30s linear infinite;font-family:'Cormorant Garamond';font-size:44px;color:transparent;-webkit-text-stroke:1px #ffffff55}
+.mq span{margin:0 30px}.mq em{color:var(--gold);font-style:normal;-webkit-text-stroke:0}
+@keyframes mq{to{transform:translateX(-50%)}}
+section{padding:120px 5vw;position:relative}
+.sh{max-width:700px;margin-bottom:60px}
+.sh small{color:var(--gold);letter-spacing:.3em;font-size:12px;text-transform:uppercase}
+.sh h2{font-size:clamp(38px,5vw,72px);line-height:1;margin-top:14px}
+/* reveal */
+.rv{opacity:0;transform:translateY(60px);transition:1s cubic-bezier(.2,.9,.2,1)}
+.rv.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+/* services */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+.card{position:relative;padding:36px 30px;border-radius:var(--r);background:linear-gradient(160deg,#ffffff0d,#ffffff03);border:1px solid #ffffff14;overflow:hidden;transition:transform .2s,border-color .4s;min-height:340px;display:flex;flex-direction:column;justify-content:flex-end}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(400px circle at var(--mx,50%) var(--my,0%),#e3b86630,transparent 60%);opacity:0;transition:.4s}
+.card:hover::before{opacity:1}.card:hover{border-color:#e3b86677}
+.card svg{position:absolute;top:30px;left:30px;width:90px;height:90px;stroke:var(--gold);fill:none;stroke-width:1.5;stroke-dasharray:400;stroke-dashoffset:400;transition:stroke-dashoffset 2s}
+.card.in svg{stroke-dashoffset:0}
+.card h3{font-size:34px;margin-bottom:10px;position:relative}
+.card p{color:var(--mut);font-size:14px;line-height:1.7;position:relative}
+.card .n{position:absolute;top:26px;right:28px;font-family:'Cormorant Garamond';font-size:56px;color:#ffffff10}
+/* configurator */
+.conf{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;background:var(--bg2);border-radius:36px;padding:60px;border:1px solid #ffffff12}
+.stage{aspect-ratio:1;border-radius:26px;background:radial-gradient(circle at 50% 30%,#1b2340,#080b14);position:relative;overflow:hidden;display:grid;place-items:center}
+.stage svg{width:78%;transition:.6s}
+.opts h4{font-size:12px;letter-spacing:.25em;color:var(--mut);text-transform:uppercase;margin:26px 0 12px;font-weight:600}
+.sw{display:flex;gap:12px;flex-wrap:wrap}
+.sw button{cursor:pointer;padding:12px 20px;border-radius:99px;border:1px solid #ffffff2a;background:none;color:var(--txt);font:inherit;font-size:13px;transition:.3s}
+.sw button.on{background:var(--gold);color:#000;border-color:var(--gold)}
+.sw .c{width:42px;height:42px;padding:0;border-radius:50%}
+.sw .c.on{outline:2px solid var(--gold);outline-offset:3px}
+.price{font-family:'Cormorant Garamond';font-size:64px;color:var(--gold);margin-top:10px}
+.price small{font-size:16px;color:var(--mut);font-family:Manrope}
+input[type=range]{width:100%;accent-color:var(--gold)}
+@media(max-width:860px){.conf{grid-template-columns:1fr;padding:26px}}
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:30px;text-align:center}
+.stats b{font-family:'Cormorant Garamond';font-size:clamp(56px,7vw,100px);display:block;line-height:1}
+.stats span{color:var(--mut);font-size:13px;letter-spacing:.15em;text-transform:uppercase}
+/* process */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;position:relative}
+.steps::before{content:"";position:absolute;top:34px;left:0;height:1px;width:100%;background:linear-gradient(90deg,var(--gold),transparent)}
+.step{padding:0 24px 0 0;position:relative}
+.step i{display:grid;place-items:center;width:68px;height:68px;border-radius:50%;background:var(--bg);border:1px solid var(--gold);font-style:normal;font-family:'Cormorant Garamond';font-size:28px;color:var(--gold);margin-bottom:24px;position:relative}
+.step i::after{content:"";position:absolute;inset:-8px;border-radius:50%;border:1px solid #e3b86633;animation:pl 2.5s infinite}
+@keyframes pl{to{transform:scale(1.4);opacity:0}}
+.step h3{font-size:26px;margin-bottom:8px}.step p{color:var(--mut);font-size:14px;line-height:1.7}
+/* gallery */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;gap:16px}
+.g{border-radius:20px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:22px;font-family:'Cormorant Garamond';font-size:26px}
+.g::before{content:"";position:absolute;inset:0;background:var(--bgi);transition:transform .8s}
+.g:hover::before{transform:scale(1.15) rotate(2deg)}
+.g span{position:relative;text-shadow:0 2px 12px #000}
+.g:nth-child(1){grid-column:span 2;grid-row:span 2}.g:nth-child(4){grid-row:span 2}.g:nth-child(5){grid-column:span 2}
+@media(max-width:860px){.gal{grid-template-columns:1fr 1fr}.g:nth-child(n){grid-column:auto;grid-row:auto}}
+/* reviews */
+.rev{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:20px;scrollbar-width:none}
+.rev>div{flex:0 0 min(420px,85%);scroll-snap-align:start;padding:34px;border-radius:var(--r);background:#ffffff08;border:1px solid #ffffff14}
+.rev q{font-family:'Cormorant Garamond';font-size:26px;line-height:1.35;display:block;margin-bottom:22px}
+.rev b{color:var(--gold)}.rev small{display:block;color:var(--mut);margin-top:4px}
+.stars{color:var(--gold);letter-spacing:4px;margin-bottom:14px}
+/* contact */
+.ct{display:grid;grid-template-columns:1fr 1fr;gap:50px;padding:70px;border-radius:36px;background:linear-gradient(135deg,#1a1405,#0d1120 60%);border:1px solid #e3b86644}
+.ct h2{font-size:clamp(40px,5vw,72px);line-height:1}
+form{display:grid;gap:14px}
+input,select{padding:18px 22px;border-radius:14px;border:1px solid #ffffff22;background:#ffffff08;color:var(--txt);font:inherit;outline:0;transition:.3s}
+input:focus,select:focus{border-color:var(--gold);background:#ffffff0f}
+select option{background:#0d1120}
+.info{margin-top:30px;color:var(--mut);line-height:2}.info a{color:var(--gold);font-size:22px;font-family:'Cormorant Garamond'}
+@media(max-width:860px){.ct{grid-template-columns:1fr;padding:30px}}
+footer{padding:40px 5vw;text-align:center;color:var(--mut);font-size:13px;border-top:1px solid #ffffff12}
+.wa{position:fixed;right:24px;bottom:24px;z-index:60;width:62px;height:62px;border-radius:50%;background:var(--gold);display:grid;place-items:center;box-shadow:0 0 0 0 #e3b866aa;animation:ring 2s infinite}
+@keyframes ring{to{box-shadow:0 0 0 26px #e3b86600}}
+.wa svg{width:28px;fill:#1a1200}
+.prog{position:fixed;top:0;left:0;height:3px;background:var(--gold);z-index:100;width:0}
+</style>
+</head>
+<body>
+<div class="prog" id="prog"></div>
+<div id="loader"><div class="ld">
+<svg viewBox="0 0 60 60" fill="none" stroke="#e3b866" stroke-width="2"><path d="M30 4 54 30 30 56 6 30Z"/><path d="M30 4 30 56M6 30H54M18 17 42 43M42 17 18 43" opacity=".4"/></svg>
+<b>LUMIVERA</b><i></i></div></div>
+<canvas id="bg"></canvas>
+
+<nav id="nav">
+<a class="logo" href="#top"><svg viewBox="0 0 60 60" fill="none" stroke="#e3b866" stroke-width="3"><path d="M30 4 54 30 30 56 6 30Z"/><path d="M30 4 30 56M6 30H54" opacity=".5"/></svg>LUMIVERA</a>
+<ul><li><a href="#xizmat">Xizmatlar</a></li><li><a href="#konf">Konfigurator</a></li><li><a href="#galereya">Ishlar</a></li><li><a href="#jarayon">Jarayon</a></li><li><a href="#aloqa">Aloqa</a></li></ul>
+<a class="btn" href="#aloqa">Buyurtma</a>
+</nav>
+
+<header class="hero" id="top">
+<div>
+<span class="tag">✦ 15 yillik tajriba</span>
+<h1><span class="l"><span>Shisha —</span></span><span class="l"><span>bu shunchaki</span></span><span class="l"><span class="gold">devor emas.</span></span></h1>
+<p>Dush kabinalari, shisha peregorodkalar, loft eshiklar va moskit setkalari. Uyingizga nur, ko'lam va hashamat olib kiramiz.</p>
+<div class="cta"><a class="btn" href="#konf">Narxni hisoblash →</a><a class="btn o" href="#galereya">Ishlarimiz</a></div>
+</div>
+<div class="hero-r">
+<div class="door" id="door"><div class="pane b"></div><div class="pane"><div class="handle"></div></div><div class="pane f" style="opacity:.55"></div></div>
+<div class="float f1"><b data-n="2500">0</b>bajarilgan loyiha</div>
+<div class="float f2"><b>5 yil</b>kafolat</div>
+</div>
+<div class="scroll"></div>
+</header>
+
+<div class="mq"><div id="mq"></div></div>
+
+<section id="xizmat">
+<div class="sh rv"><small>Xizmatlar</small><h2>Har bir <span class="gold">xonaga</span> o'z shishasi</h2></div>
+<div class="grid">
+<div class="card rv"><span class="n">01</span><svg viewBox="0 0 100 100"><rect x="25" y="10" width="50" height="80" rx="3"/><path d="M42 40l-4 12M52 40l-4 12M62 40l-4 12"/></svg><h3>Dush kabinalari</h3><p>Zamonaviy, xavfsiz temperlangan shisha. Har qanday o'lchamga individual.</p></div>
+<div class="card rv d1"><span class="n">02</span><svg viewBox="0 0 100 100"><rect x="10" y="15" width="80" height="70"/><path d="M50 15v70M10 50h80M30 35h10M60 65h10"/></svg><h3>Peregorodkalar</h3><p>Ofis va uy uchun shaffof devorlar: fazoni bo'ladi, nurni saqlaydi.</p></div>
+<div class="card rv d2"><span class="n">03</span><svg viewBox="0 0 100 100"><rect x="15" y="10" width="70" height="80"/><path d="M15 36h70M15 62h70M50 10v80"/></svg><h3>Loft eshiklar</h3><p>Qora metall ramka va yog'och-shisha uyg'unligi. Sanoat uslubi.</p></div>
+<div class="card rv d3"><span class="n">04</span><svg viewBox="0 0 100 100"><rect x="15" y="15" width="70" height="70"/><path d="M15 29h70M15 43h70M15 57h70M15 71h70M29 15v70M43 15v70M57 15v70M71 15v70"/></svg><h3>Moskit setkalari</h3><p>Hasharotlardan himoya, havo almashinuvi saqlanadi. Tez o'rnatish.</p></div>
+</div></section>
+
+<section id="konf">
+<div class="sh rv"><small>Interaktiv</small><h2>O'zingizning <span class="gold">kabinangizni</span> yarating</h2></div>
+<div class="conf rv">
+<div class="stage"><svg id="cab" viewBox="0 0 200 240">
+<defs><linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop id="s1" offset="0" stop-color="#7fd6ff" stop-opacity=".35"/><stop id="s2" offset="1" stop-color="#7fd6ff" stop-opacity=".08"/></linearGradient>
+<pattern id="rib" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="2" height="6" fill="#fff" opacity=".18"/></pattern></defs>
+<ellipse cx="100" cy="228" rx="85" ry="8" fill="#000" opacity=".5"/>
+<g id="frame" stroke="#e3b866" stroke-width="4" fill="none"><rect x="30" y="20" width="140" height="200"/>
+<path id="div" d="M100 20V220"/></g>
+<rect x="32" y="22" width="136" height="196" fill="url(#gg)"/>
+<rect id="pat" x="32" y="22" width="136" height="196" fill="url(#rib)" opacity="0"/>
+<path d="M45 30 80 30 40 120Z" fill="#fff" opacity=".12"><animate attributeName="opacity" values=".05;.22;.05" dur="4s" repeatCount="indefinite"/></path>
+<rect id="hd" x="92" y="100" width="4" height="40" rx="2" fill="#e3b866"/>
+<g fill="#7fd6ff" opacity=".7"><circle cx="60" cy="12" r="2"><animate attributeName="cy" values="12;60" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0" dur="2s" repeatCount="indefinite"/></circle><circle cx="140" cy="10" r="2"><animate attributeName="cy" values="10;70" dur="2.6s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0" dur="2.6s" repeatCount="indefinite"/></circle></g>
+</svg></div>
+<div class="opts">
+<h4>Shisha turi</h4><div class="sw" id="o-type"><button class="on" data-v="clear" data-p="1">Shaffof</button><button data-v="matt" data-p="1.15">Matt</button><button data-v="rib" data-p="1.3">Rifli</button><button data-v="tint" data-p="1.25">Tonirovka</button></div>
+<h4>Ramka rangi</h4><div class="sw" id="o-col"><button class="c on" data-v="#e3b866" style="background:#e3b866"></button><button class="c" data-v="#111111" style="background:#111;border-color:#555"></button><button class="c" data-v="#c9ced8" style="background:#c9ced8"></button><button class="c" data-v="#b87333" style="background:#b87333"></button></div>
+<h4>Eshik turi</h4><div class="sw" id="o-door"><button class="on" data-v="1" data-p="1">Ochiladigan</button><button data-v="0" data-p="1.2">Sirpanuvchi</button></div>
+<h4>Eni: <b id="wv">90</b> sm</h4><input type="range" id="w" min="70" max="160" value="90">
+<div class="price"><span id="pr">0</span> <small>so'm dan</small></div>
+<a class="btn" href="#aloqa" style="margin-top:18px">Shu variantni buyurtma qilish</a>
+</div></div></section>
+
+<section>
+<div class="stats">
+<div class="rv"><b class="gold" data-n="15">0</b><span>yillik tajriba</span></div>
+<div class="rv d1"><b class="gold" data-n="2500" data-s="+">0</b><span>loyiha</span></div>
+<div class="rv d2"><b class="gold" data-n="88" data-s="K">0</b><span>instagram obunachi</span></div>
+<div class="rv d3"><b class="gold" data-n="5" data-s=" yil">0</b><span>kafolat</span></div>
+</div></section>
+
+<section id="galereya">
+<div class="sh rv"><small>Portfolio</small><h2>Ishlarimizdan <span class="gold">lavhalar</span></h2></div>
+<div class="gal">
+<div class="g rv" style="--bgi:linear-gradient(135deg,#3a2a0a,#c9964a 60%,#1b1505)"><span>Villa — dush zonasi</span></div>
+<div class="g rv d1" style="--bgi:linear-gradient(160deg,#0d2a3f,#2a7ca8)"><span>Ofis peregorodka</span></div>
+<div class="g rv d2" style="--bgi:linear-gradient(160deg,#1a1a1a,#555)"><span>Loft eshik</span></div>
+<div class="g rv" style="--bgi:linear-gradient(200deg,#2d1a3f,#7a4aa8)"><span>Klinika</span></div>
+<div class="g rv d1" style="--bgi:linear-gradient(120deg,#0f3a2b,#3aa87a)"><span>Zamonaviy hammom</span></div>
+<div class="g rv d2" style="--bgi:linear-gradient(120deg,#3f1a1a,#b84a4a)"><span>Restoran zonasi</span></div>
+</div></section>
+
+<section id="jarayon">
+<div class="sh rv"><small>Jarayon</small><h2>G'oyadan <span class="gold">o'rnatishgacha</span></h2></div>
+<div class="steps">
+<div class="step rv"><i>1</i><h3>O'lchov</h3><p>Usta bepul kelib o'lchaydi.</p></div>
+<div class="step rv d1"><i>2</i><h3>Dizayn</h3><p>3D vizual va aniq narx.</p></div>
+<div class="step rv d2"><i>3</i><h3>Ishlab chiqarish</h3><p>Zavodda 3–7 kun ichida.</p></div>
+<div class="step rv d3"><i>4</i><h3>O'rnatish</h3><p>Toza, tez va kafolat bilan.</p></div>
+</div></section>
+
+<section>
+<div class="sh rv"><small>Mijozlar</small><h2>Ular <span class="gold">yoqtirdi</span></h2></div>
+<div class="rev rv">
+<div><div class="stars">★★★★★</div><q>Vannaxonamiz butunlay boshqacha ko'rindi. Usta aniq vaqtda keldi.</q><b>Dilnoza A.</b><small>Toshkent</small></div>
+<div><div class="stars">★★★★★</div><q>Ofisga peregorodka qildirdik, jamoa juda xursand. Sifat a'lo.</q><b>Jasur M.</b><small>Samarqand</small></div>
+<div><div class="stars">★★★★★</div><q>Loft eshik uyimizning yuziga aylandi. Rahmat!</q><b>Malika R.</b><small>Buxoro</small></div>
+<div><div class="stars">★★★★★</div><q>Narx ham, sifat ham o'zini oqladi. Tavsiya qilaman.</q><b>Aziz K.</b><small>Toshkent</small></div>
+</div></section>
+
+<section id="aloqa">
+<div class="ct rv">
+<div><h2>Bepul o'lchovga <span class="gold">yoziling</span></h2>
+<div class="info">Telefon<br><a href="tel:+998900000000">+998 90 000 00 00</a><br>Manzil: Toshkent shahri<br>Ish vaqti: 09:00 — 19:00</div></div>
+<form id="f"><input placeholder="Ismingiz" required><input placeholder="Telefon raqam" type="tel" required>
+<select><option>Dush kabinasi</option><option>Peregorodka</option><option>Loft eshik</option><option>Moskit setka</option></select>
+<button class="btn">Yuborish →</button><small id="ok" style="color:var(--gold)"></small></form>
+</div></section>
+
+<footer>© 2026 LUMIVERA. Barcha huquqlar himoyalangan.</footer>
+<a class="wa" href="tel:+998900000000"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11 11 0 0 0 3.6.6 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.6 3.6a1 1 0 0 1-.25 1z"/></svg></a>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+setTimeout(()=>$('#loader').classList.add('done'),1700);
+let mx=innerWidth/2;
+addEventListener('mousemove',e=>{mx=e.clientX});
+/* nav/progress */
+addEventListener('scroll',()=>{$('#nav').classList.toggle('s',scrollY>40);$('#prog').style.width=scrollY/(document.body.scrollHeight-innerHeight)*100+'%'});
+/* marquee */
+const words=['Dush kabinalari','Peregorodka','Loft eshiklar','Moskit setka','Temperlangan shisha'];
+$('#mq').innerHTML=Array(4).fill(words.map(w=>`<span>${w}</span><span><em>✦</em></span>`).join('')).join('');
+/* reveal + counters */
+const cnt=el=>{const t=+el.dataset.n,s=el.dataset.s||'';let st=null;const f=ts=>{st=st||ts;const p=Math.min((ts-st)/1800,1);el.textContent=Math.floor(t*(1-Math.pow(1-p,3)))+s;if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)};
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');e.target.querySelectorAll('[data-n]').forEach(cnt);if(e.target.dataset.n)cnt(e.target);io.unobserve(e.target)}}),{threshold:.15});
+$$('.rv').forEach(e=>io.observe(e));$$('.float b[data-n]').forEach(e=>io.observe(e));
+/* card tilt + glow */
+$$('.card').forEach(c=>{c.onmousemove=e=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;c.style.setProperty('--mx',x*100+'%');c.style.setProperty('--my',y*100+'%');c.style.transform=`perspective(800px) rotateY(${(x-.5)*14}deg) rotateX(${(.5-y)*14}deg)`};c.onmouseleave=()=>c.style.transform=''});
+/* hero door parallax */
+const door=$('#door');addEventListener('mousemove',e=>{const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;door.style.transform=`rotateY(${x*40}deg) rotateX(${-y*20}deg)`});
+/* magnetic buttons */
+$$('.btn').forEach(b=>{b.onmousemove=e=>{const r=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.25}px,${(e.clientY-r.top-r.height/2)*.35}px)`};b.onmouseleave=()=>b.style.transform=''});
+/* configurator */
+const st={type:'clear',tp:1,col:'#e3b866',door:1,dp:1};
+function upd(){
+ const w=+$('#w').value;$('#wv').textContent=w;
+ const base=2200000*(w/90)*st.tp*st.dp;
+ const el=$('#pr'),from=+el.dataset.v||0,to=Math.round(base/10000)*10000;el.dataset.v=to;
+ let t0=null;(function a(ts){t0=t0||ts;const p=Math.min((ts-t0)/500,1),v=Math.round(from+(to-from)*p);el.textContent=v.toLocaleString('ru-RU');if(p<1)requestAnimationFrame(a)})(performance.now());
+ $('#frame').setAttribute('stroke',st.col);$('#hd').setAttribute('fill',st.col);
+ $('#div').style.opacity=st.door?0:1;
+ const t=st.type;$('#pat').setAttribute('opacity',t==='rib'?1:0);
+ const c=t==='tint'?'#6b7280':t==='matt'?'#ffffff':'#7fd6ff';
+ $('#s1').setAttribute('stop-color',c);$('#s2').setAttribute('stop-color',c);
+ $('#s1').setAttribute('stop-opacity',t==='matt'||t==='tint'?.6:.35);
+ $('#cab').style.transform=`scaleX(${.8+w/450})`;
+}
+function grp(id,fn){$$('#'+id+' button').forEach(b=>b.onclick=()=>{$$('#'+id+' button').forEach(x=>x.classList.remove('on'));b.classList.add('on');fn(b);upd()})}
+grp('o-type',b=>{st.type=b.dataset.v;st.tp=+b.dataset.p});grp('o-col',b=>st.col=b.dataset.v);grp('o-door',b=>{st.door=+b.dataset.v;st.dp=+b.dataset.p});
+$('#w').oninput=upd;upd();
+/* form */
+$('#f').onsubmit=e=>{e.preventDefault();$('#ok').textContent='✓ Rahmat! Tez orada siz bilan bog\'lanamiz.';e.target.reset()};
+/* background: floating glass shards */
+const cv=$('#bg'),g=cv.getContext('2d');let W,H,P=[];
+function rs(){W=cv.width=innerWidth;H=cv.height=innerHeight}rs();addEventListener('resize',rs);
+for(let i=0;i<46;i++)P.push({x:Math.random()*W,y:Math.random()*H,s:20+Math.random()*70,r:Math.random()*6,vr:(Math.random()-.5)*.004,vy:.1+Math.random()*.3,a:.03+Math.random()*.07,gold:Math.random()<.3});
+(function d(){g.clearRect(0,0,W,H);
+ const gr=g.createRadialGradient(W*.8,H*.1,0,W*.8,H*.1,W*.7);gr.addColorStop(0,'#e3b86618');gr.addColorStop(1,'transparent');g.fillStyle=gr;g.fillRect(0,0,W,H);
+ P.forEach(p=>{p.y-=p.vy;p.r+=p.vr;if(p.y<-100){p.y=H+100;p.x=Math.random()*W}
+  g.save();g.translate(p.x+(mx-W/2)*p.s*.0004,p.y);g.rotate(p.r);g.beginPath();g.moveTo(0,-p.s);g.lineTo(p.s*.6,0);g.lineTo(0,p.s*.9);g.lineTo(-p.s*.5,0);g.closePath();
+  g.fillStyle=p.gold?`rgba(227,184,102,${p.a})`:`rgba(127,214,255,${p.a})`;g.fill();g.strokeStyle=`rgba(255,255,255,${p.a*1.5})`;g.stroke();g.restore()});
+ requestAnimationFrame(d)})();
+</script>
+</body>
+</html>

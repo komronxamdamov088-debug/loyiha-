@@ -1,0 +1,57 @@
+import { Link } from 'react-router-dom'
+import { Configurator } from '../components/Configurator'
+import { Contact } from '../components/Contact'
+import { CtaBand } from '../components/CtaBand'
+import { Faq } from '../components/Faq'
+import { Gallery } from '../components/Gallery'
+import { Hero } from '../components/Hero'
+import { Marquee } from '../components/Marquee'
+import { Process } from '../components/Process'
+import { Reviews } from '../components/Reviews'
+import { Reveal } from '../components/Reveal'
+import { SectionHeader } from '../components/SectionHeader'
+import { Services } from '../components/Services'
+import { Stats } from '../components/Stats'
+import { CITIES } from '../data/cities'
+import { GENERAL_FAQS } from '../data/faqs'
+import { Seo } from '../seo/Seo'
+
+export default function Home() {
+  return (
+    <>
+      <Seo path="/" />
+      <Hero />
+      <Marquee />
+      <section className="about-sum">
+        <Reveal>
+          <p className="lead">
+            LUMIVERA — temperlangan shishadan dush kabinalari, peregorodkalar, loft eshiklar va moskit setkalarini
+            buyurtma asosida ishlab chiqaradigan ustaxona. Usta bepul o'lchaydi, shisha zavodda 3–7 kunda tayyorlanadi,
+            o'rnatish va 5 yillik kafolat narxga kiradi.
+          </p>
+        </Reveal>
+      </section>
+      <Services />
+      <Configurator />
+      <Stats />
+      <Gallery />
+      <Process />
+      <section>
+        <SectionHeader label="Hududlar">
+          Qayerda <span className="gold">ishlaymiz</span>
+        </SectionHeader>
+        <div className="chips">
+          {CITIES.map((c) => (
+            <Link key={c.slug} to={`/hududlar/${c.slug}`} className="chip">
+              {c.name}
+            </Link>
+          ))}
+        </div>
+      </section>
+      <Reviews />
+      <Faq items={GENERAL_FAQS.slice(0, 5)} title="Ko'p beriladigan savollar" />
+      <CtaBand />
+      <Contact />
+    </>
+  )
+}
