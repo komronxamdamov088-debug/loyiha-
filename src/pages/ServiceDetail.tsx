@@ -39,6 +39,17 @@ export default function ServiceDetail() {
           </div>
         </Reveal>
       </section>
+      {s.images && (
+        <section className="shots-sec">
+          <div className="shots">
+            {s.images.map((im, i) => (
+              <Reveal key={im.src} className={`shot s${i}`} delay={i > 0 ? (Math.min(i, 3) as 1 | 2 | 3) : undefined}>
+                <img src={im.src} alt={im.alt} width={im.w} height={im.h} loading="lazy" decoding="async" />
+              </Reveal>
+            ))}
+          </div>
+        </section>
+      )}
       <section>
         <SectionHeader label="Afzalliklar">
           Nega <span className="gold">LUMIVERA</span>

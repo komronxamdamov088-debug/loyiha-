@@ -17,6 +17,7 @@ export interface ServicePage {
   specs: { label: string; value: string }[]
   useCases: string[]
   faqs: Faq[]
+  images?: { src: string; alt: string; w: number; h: number }[]
 }
 
 export const SERVICE_PAGES: ServicePage[] = [
@@ -48,6 +49,11 @@ export const SERVICE_PAGES: ServicePage[] = [
       { label: 'Kafolat', value: '5 yil' },
     ],
     useCases: ["Kvartira vannaxonasi", 'Villa va kottedj', 'Mehmonxona va xostel', 'Fitnes-klub va SPA'],
+    images: [
+      { src: '/img/dush-marmar.jpg', alt: 'Marmar devorli vannaxonada ramkasiz shisha dush kabinasi', w: 1400, h: 933 },
+      { src: '/img/dush-qora-ramka.jpg', alt: 'Qora ramkali sirpanuvchi eshikli dush kabinasi', w: 800, h: 1200 },
+      { src: '/img/dush-oyna-eshik.jpg', alt: 'Shaffof shisha eshikli dush kabinasi', w: 800, h: 1200 },
+    ],
     faqs: [
       {
         q: 'Dush kabinasi uchun qanday shisha qalinligi tanlanadi?',

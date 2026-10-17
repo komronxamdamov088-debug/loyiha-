@@ -13,10 +13,13 @@ export function Gallery() {
         {GALLERY.map((item, i) => (
           <Reveal
             key={item.title}
-            className="g"
+            className={`g${item.img ? ' has-img' : ''}`}
             delay={i % 3 ? ((i % 3) as 1 | 2) : undefined}
             style={{ '--bgi': item.bg } as CSSProperties}
           >
+            {item.img && (
+              <img src={item.img.src} alt={item.img.alt} width={item.img.w} height={item.img.h} loading="lazy" decoding="async" />
+            )}
             <span>{item.title}</span>
           </Reveal>
         ))}
