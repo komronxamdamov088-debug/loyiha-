@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom'
 import { CtaBand } from '../components/CtaBand'
+import { Media } from '../components/Media'
 import { PageHero } from '../components/PageHero'
 import { Reveal } from '../components/Reveal'
 import { CITIES } from '../data/cities'
 import { Seo } from '../seo/Seo'
-import { PHOTO } from '../data/media'
+import { CITY_MEDIA, PHOTO } from '../data/media'
 
 export default function Cities() {
   return (
@@ -25,6 +26,9 @@ export default function Cities() {
         <div className="grid">
           {CITIES.map((c) => (
             <Reveal key={c.slug} className="card flat">
+              <div className="strip">
+                <Media item={CITY_MEDIA[c.slug]} />
+              </div>
               <h3>
                 <Link to={`/hududlar/${c.slug}`}>{c.name}</Link>
               </h3>

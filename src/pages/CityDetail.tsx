@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom'
 import { CtaBand } from '../components/CtaBand'
 import { Faq } from '../components/Faq'
+import { Media } from '../components/Media'
 import { PageHero } from '../components/PageHero'
 import { Reveal } from '../components/Reveal'
 import { SectionHeader } from '../components/SectionHeader'
@@ -9,7 +10,7 @@ import { getCity } from '../data/cities'
 import { serviceTiles } from '../data/tiles'
 import { Seo } from '../seo/Seo'
 import NotFound from './NotFound'
-import { CITY_MEDIA } from '../data/media'
+import { CITY_MEDIA, PHOTO } from '../data/media'
 
 export default function CityDetail() {
   const { slug = '' } = useParams()
@@ -31,11 +32,16 @@ export default function CityDetail() {
         media={CITY_MEDIA[c.slug]}
       />
       <section className="prose-sec">
-        <Reveal className="prose">
-          {c.details.map((p) => (
-            <p key={p}>{p}</p>
-          ))}
-        </Reveal>
+        <div className="split">
+          <Reveal className="prose">
+            {c.details.map((p) => (
+              <p key={p}>{p}</p>
+            ))}
+          </Reveal>
+          <Reveal className="split-media">
+            <Media item={PHOTO.marmar} />
+          </Reveal>
+        </div>
       </section>
       <section>
         <SectionHeader label="Xizmatlar">

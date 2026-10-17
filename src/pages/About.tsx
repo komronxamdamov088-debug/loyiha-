@@ -1,10 +1,11 @@
 import { CtaBand } from '../components/CtaBand'
+import { Media } from '../components/Media'
+import { PHOTO, VALUE_MEDIA } from '../data/media'
 import { PageHero } from '../components/PageHero'
 import { Reveal } from '../components/Reveal'
 import { SectionHeader } from '../components/SectionHeader'
 import { Stats } from '../components/Stats'
 import { Seo } from '../seo/Seo'
-import { PHOTO } from '../data/media'
 
 const VALUES = [
   { title: 'Xavfsizlik', text: "Faqat temperlangan yoki triplex shisha va zanglamaydigan furnitura ishlatamiz." },
@@ -29,6 +30,7 @@ export default function About() {
         media={PHOTO.qora}
       />
       <section className="prose-sec">
+        <div className="split">
         <Reveal className="prose">
           <p>
             Biz uyga nur, ko'lam va hashamat olib kirishni maqsad qilganmiz. Har bir loyiha o'lchovdan boshlanadi: usta
@@ -39,6 +41,10 @@ export default function About() {
             restoranlar uchun. Mijozlarimiz Toshkent, Samarqand va Buxoroda.
           </p>
         </Reveal>
+        <Reveal className="split-media">
+          <Media item={PHOTO.hammom} />
+        </Reveal>
+        </div>
       </section>
       <Stats />
       <section>
@@ -48,6 +54,9 @@ export default function About() {
         <div className="grid">
           {VALUES.map((v, i) => (
             <Reveal key={v.title} className="card flat" delay={i > 0 ? (Math.min(i, 3) as 1 | 2 | 3) : undefined}>
+              <div className="strip">
+                <Media item={VALUE_MEDIA[i]} />
+              </div>
               <h3>{v.title}</h3>
               <p>{v.text}</p>
             </Reveal>

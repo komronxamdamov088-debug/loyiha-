@@ -58,6 +58,9 @@ export default function ServiceDetail() {
         <div className="grid">
           {s.benefits.map((b, i) => (
             <Reveal key={b.title} className="card flat" delay={i > 0 ? (Math.min(i, 3) as 1 | 2 | 3) : undefined}>
+              <div className="strip">
+                <Media item={[s.hero, ...s.gallery][i % 4]} />
+              </div>
               <h3>{b.title}</h3>
               <p>{b.text}</p>
             </Reveal>

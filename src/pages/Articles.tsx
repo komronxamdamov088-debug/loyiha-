@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom'
 import { CtaBand } from '../components/CtaBand'
+import { Media } from '../components/Media'
 import { PageHero } from '../components/PageHero'
 import { Reveal } from '../components/Reveal'
 import { ARTICLES } from '../data/articles'
 import { Seo } from '../seo/Seo'
-import { art } from '../data/media'
+import { ARTICLE_MEDIA, art } from '../data/media'
 
 export default function Articles() {
   return (
@@ -25,6 +26,9 @@ export default function Articles() {
         <div className="grid">
           {ARTICLES.map((a) => (
             <Reveal key={a.slug} className="card flat">
+              <div className="strip">
+                <Media item={ARTICLE_MEDIA[a.slug]} />
+              </div>
               <small className="date">
                 {a.modified} · {a.readMinutes} daqiqa
               </small>

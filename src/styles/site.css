@@ -127,3 +127,31 @@ footer{padding:70px 5vw 30px;text-align:left}
 .faq-media{border-radius:24px;overflow:hidden;border:1px solid #ffffff18;aspect-ratio:4/5;position:sticky;top:110px}
 .faq-media img,.faq-media svg{width:100%;height:100%;object-fit:cover;display:block}
 @media(max-width:900px){.faq-wrap.has-media{grid-template-columns:1fr}.faq-media{aspect-ratio:16/10;position:static}}
+
+/* image strips, splits, inline figures */
+.strip{aspect-ratio:16/8;border-radius:14px;overflow:hidden;margin-bottom:22px;position:relative;z-index:1;background:var(--bg2)}
+.strip img,.strip svg{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s}
+.card:hover .strip img,.card:hover .strip svg,.step:hover .strip img,.step:hover .strip svg{transform:scale(1.07)}
+.step .strip{margin:0 0 18px;aspect-ratio:4/3}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:60px;align-items:center}
+.split .prose{max-width:none}
+.split-media{border-radius:26px;overflow:hidden;border:1px solid #ffffff18;aspect-ratio:4/3;box-shadow:0 30px 80px #0008}
+.split-media img,.split-media svg{width:100%;height:100%;object-fit:cover;display:block}
+.split-media.duo{display:grid;grid-template-columns:1fr 1fr;gap:12px;border:0;box-shadow:none;aspect-ratio:auto;overflow:visible}
+.split-media.duo>*{border-radius:20px;border:1px solid #ffffff18;height:100%;min-height:260px;object-fit:cover}
+.split-media.duo>svg{aspect-ratio:auto}
+.about-split{align-items:center}
+.about-sum .about-split .lead{max-width:none}
+@media(max-width:900px){.split{grid-template-columns:1fr;gap:30px}}
+.inline-fig{margin:10px 0 34px;border-radius:22px;overflow:hidden;border:1px solid #ffffff18}
+.inline-fig img,.inline-fig svg{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;height:auto}
+.inline-fig figcaption{padding:12px 18px;font-size:13px;color:var(--mut);background:#ffffff06}
+.ct-media{margin-top:30px;border-radius:20px;overflow:hidden;aspect-ratio:16/9;border:1px solid #ffffff18}
+.ct-media img,.ct-media svg{width:100%;height:100%;object-fit:cover;display:block}
+.cta-in{position:relative;overflow:hidden}
+.cta-bg{position:absolute;inset:0;opacity:.6}
+.cta-bg img,.cta-bg svg{width:100%;height:100%;object-fit:cover;display:block}
+.cta-bg::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,#07090fb3,#07090fe6)}
+.cta-in h2,.cta-in .cta{position:relative;z-index:1}
+.g:nth-child(6){grid-row:span 2}
+@media(max-width:860px){.g:nth-child(n){grid-column:auto;grid-row:auto}}

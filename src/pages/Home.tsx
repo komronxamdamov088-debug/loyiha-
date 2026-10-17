@@ -4,6 +4,7 @@ import { CtaBand } from '../components/CtaBand'
 import { Faq } from '../components/Faq'
 import { Gallery } from '../components/Gallery'
 import { Hero } from '../components/Hero'
+import { Media } from '../components/Media'
 import { Marquee } from '../components/Marquee'
 import { Process } from '../components/Process'
 import { Reviews } from '../components/Reviews'
@@ -14,7 +15,7 @@ import { Stats } from '../components/Stats'
 import { Tiles } from '../components/Tiles'
 import { cityTiles } from '../data/tiles'
 import { GENERAL_FAQS } from '../data/faqs'
-import { PHOTO } from '../data/media'
+import { art, PHOTO } from '../data/media'
 import { Seo } from '../seo/Seo'
 
 export default function Home() {
@@ -24,6 +25,7 @@ export default function Home() {
       <Hero />
       <Marquee />
       <section className="about-sum">
+        <div className="split about-split">
         <Reveal>
           <p className="lead">
             LUMIVERA — temperlangan shishadan dush kabinalari, peregorodkalar, loft eshiklar va moskit setkalarini
@@ -31,6 +33,11 @@ export default function Home() {
             o'rnatish va 5 yillik kafolat narxga kiradi.
           </p>
         </Reveal>
+        <Reveal className="split-media duo">
+          <Media item={PHOTO.marmar} />
+          <Media item={art('partition', 'gold')} />
+        </Reveal>
+        </div>
       </section>
       <Services />
       <Configurator />

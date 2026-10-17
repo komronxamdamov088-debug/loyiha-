@@ -1,6 +1,8 @@
 import { useState, type FormEvent } from 'react'
 import { PHONE, PHONE_LABEL, SERVICE_OPTIONS } from '../data/content'
 import { SITE } from '../site'
+import { PHOTO } from '../data/media'
+import { Media } from './Media'
 import { Reveal } from './Reveal'
 
 const EMPTY = { name: '', phone: '', service: SERVICE_OPTIONS[0] }
@@ -34,6 +36,9 @@ export function Contact() {
             Manzil: {SITE.address.city} shahri
             <br />
             Ish vaqti: {SITE.hours.opens} — {SITE.hours.closes}
+          </div>
+          <div className="ct-media">
+            <Media item={PHOTO.qora} />
           </div>
         </div>
         <form onSubmit={onSubmit}>

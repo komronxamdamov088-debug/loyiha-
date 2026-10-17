@@ -32,3 +32,14 @@ export const ARTICLE_MEDIA: Record<string, MediaItem> = {
   'dush-kabinasi-tanlash': PHOTO.oyna,
   'loft-uslubidagi-peregorodka': art('loft', 'gold'),
 }
+
+export const ARTICLE_INLINE: Record<string, MediaItem> = {
+  'temperlangan-shisha-nima': art('partition', 'ice'),
+  'dush-kabinasi-tanlash': PHOTO.marmar,
+  'loft-uslubidagi-peregorodka': art('partition', 'gold'),
+}
+
+/** One visual per process step (O'lchov, Dizayn, Ishlab chiqarish, O'rnatish). */
+export const STEP_MEDIA: MediaItem[] = [art('partition', 'ice'), art('tempered', 'ice'), art('loft', 'gold'), PHOTO.marmar]
+
+export const VALUE_MEDIA: MediaItem[] = [art('tempered', 'gold'), art('partition', 'ice'), art('screen', 'green'), PHOTO.qora]

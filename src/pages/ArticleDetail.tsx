@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom'
 import { CtaBand } from '../components/CtaBand'
 import { Faq } from '../components/Faq'
+import { Media } from '../components/Media'
 import { PageHero } from '../components/PageHero'
 import { Reveal } from '../components/Reveal'
 import { getArticle } from '../data/articles'
@@ -8,7 +9,7 @@ import { articleTiles, serviceTiles } from '../data/tiles'
 import { Tiles } from '../components/Tiles'
 import { Seo } from '../seo/Seo'
 import NotFound from './NotFound'
-import { ARTICLE_MEDIA } from '../data/media'
+import { ARTICLE_INLINE, ARTICLE_MEDIA } from '../data/media'
 
 export default function ArticleDetail() {
   const { slug = '' } = useParams()
@@ -33,8 +34,14 @@ export default function ArticleDetail() {
       />
       <article className="prose-sec">
         <div className="prose">
-          {a.sections.map((s) => (
+          {a.sections.map((s, i) => (
             <Reveal key={s.h}>
+              {i === 1 && (
+                <figure className="inline-fig">
+                  <Media item={ARTICLE_INLINE[a.slug]} />
+                  <figcaption>{ARTICLE_INLINE[a.slug].alt}</figcaption>
+                </figure>
+              )}
               <h2>{s.h}</h2>
               {s.p.map((t) => (
                 <p key={t}>{t}</p>
